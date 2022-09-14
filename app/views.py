@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from .models import QuizProfile, Question, AttemptedQuestion, Choice
+from .models import QuizProfile, Question, AttemptedQuestion, Choice, Category
 from .forms import UserLoginForm, RegistrationForm, AddQuestionForm, QuestionForm, ChoiceInlineFormset
 
 
@@ -147,3 +147,9 @@ def add_question(request):
         return render(request, 'quiz/add_question.html', context)
     else:
         return redirect('home')
+
+
+def categories(request):
+
+    categories = Category.objects.all()
+    return render(request, 'quiz/categories.html', {'categories': categories})

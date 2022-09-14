@@ -9,9 +9,9 @@ from .models import Question, Choice, AttemptedQuestion, QuizProfile
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['html', 'is_published']
+        fields = ['html', 'is_published', 'category']
         widgets = {
-            'title': forms.Textarea(attrs={'rows': 3, 'cols': 80}),
+            'title': forms.Textarea(attrs={'rows': 2, 'cols': 80}),
         }
 
 

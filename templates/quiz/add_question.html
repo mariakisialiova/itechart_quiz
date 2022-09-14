@@ -9,70 +9,21 @@
         <form method="post">
             {% csrf_token %}
 
-    <label for="id_html">Question Text:</label>
-<br>
-  <textarea name="html" cols="80" rows="5" required="" id="id_html"></textarea>
-    <label for="id_is_published">Has been published?</label>
-      <input type="checkbox" name="is_published" id="id_is_published">
-            <input type="hidden" name="choices-TOTAL_FORMS" value="4" id="id_choices-TOTAL_FORMS"><input type="hidden" name="choices-INITIAL_FORMS" value="0" id="id_choices-INITIAL_FORMS"><input type="hidden" name="choices-MIN_NUM_FORMS" value="0" id="id_choices-MIN_NUM_FORMS"><input type="hidden" name="choices-MAX_NUM_FORMS" value="1000" id="id_choices-MAX_NUM_FORMS">
-   <br>
-    <label for="id_choices-0-html">Choice Text:</label>
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.label_tag }}
+                    {% if not field.name == 'is_published' %}
+                        <br/>
+                    {% endif %}
+                    {{ field }}
+                </div>
+                {% endfor %}
 
-      <textarea name="choices-0-html" cols="80" rows="2" id="id_choices-0-html"></textarea>
-     <label for="id_choices-0-is_correct">Is this answer correct?</label>
-
-      <input type="checkbox" name="choices-0-is_correct" id="id_choices-0-is_correct">
-
-        <input type="hidden" name="choices-0-id" id="id_choices-0-id"><input type="hidden" name="choices-0-question" id="id_choices-0-question">
-    <br/>
-    <label for="id_choices-1-html">Choice Text:</label>
-
-      <textarea name="choices-1-html" cols="80" rows="2" id="id_choices-1-html"></textarea>
-
-    <label for="id_choices-1-is_correct">Is this answer correct?</label>
-
-
-      <input type="checkbox" name="choices-1-is_correct" id="id_choices-1-is_correct">
-
-
-        <input type="hidden" name="choices-1-id" id="id_choices-1-id"><input type="hidden" name="choices-1-question" id="id_choices-1-question">
-    <br/>
-    <label for="id_choices-2-html">Choice Text:</label>
-
-
-      <textarea name="choices-2-html" cols="80" rows="2" id="id_choices-2-html"></textarea>
-
-    <label for="id_choices-2-is_correct">Is this answer correct?</label>
-
-
-      <input type="checkbox" name="choices-2-is_correct" id="id_choices-2-is_correct">
-
-
-        <input type="hidden" name="choices-2-id" id="id_choices-2-id"><input type="hidden" name="choices-2-question" id="id_choices-2-question">
-
-
-    <br/>
-    <label for="id_choices-3-html">Choice Text:</label>
-
-
-      <textarea name="choices-3-html" cols="80" rows="2" id="id_choices-3-html"></textarea>
-
-    <label for="id_choices-3-is_correct">Is this answer correct?</label>
-
-
-      <input type="checkbox" name="choices-3-is_correct" id="id_choices-3-is_correct">
-
-
-        <input type="hidden" name="choices-3-id" id="id_choices-3-id"><input type="hidden" name="choices-3-question" id="id_choices-3-question">
-        <br/>
+            {{ formset }}
+            <br/>
             <input type="submit" value="Submit">
+
         </form>
-<!--        <form method="post">-->
-<!--            {% csrf_token %}-->
-<!--            {{ form }}-->
-<!--            {{ formset }}-->
-<!--            <input type="submit" value="Submit">-->
-<!--        </form>-->
     </div>
 
 </div>

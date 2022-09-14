@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Question, Choice
+from .models import Question, Choice, Category
 from .forms import QuestionForm, ChoiceForm, ChoiceInlineFormset
 
 
@@ -24,3 +24,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Category)

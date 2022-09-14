@@ -11,6 +11,7 @@ class Question(TimeStampedModel):
     html = models.TextField(_('Question Text'))
     is_published = models.BooleanField(_('Has been published?'), default=False, null=False)
     maximum_marks = models.DecimalField(_('Maximum Marks'), default=4, decimal_places=2, max_digits=6)
+    category = models.ForeignKey('Category',  on_delete=models.CASCADE)
 
     def __str__(self):
         return self.html
@@ -73,3 +74,10 @@ class AttemptedQuestion(TimeStampedModel):
 
     def get_absolute_url(self):
         return f'/submission-result/{self.pk}/'
+
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=200, null=False)
+
+    def __str__(self):
+        return self.category_name
